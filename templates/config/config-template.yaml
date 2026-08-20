@@ -1,46 +1,47 @@
-# Configuration Template
+# Agent Configuration Template
 
-A generic configuration template. Copy and customize for any agent.
+This template defines the structure for agent-specific configuration overrides.
+Copy this file and customize for each agent.
 
 ```yaml
-# Agent Configuration
-# Copy to: <agent-config-path>
-# See: ../../configs/README.md
+# <agent-name> Configuration
+# Inherits from: configs/shared/base.yaml + configs/shared/safety.yaml
+# Override values below
 
-# Model Settings
-model:
-  provider: {anthropic|openai|google|openrouter|groq|local}
-  name: {model-name}
+agent:
+  name: "<agent-name>"
+  developer: "<developer>"
+  
+defaults:
+  # Override shared defaults if needed
+  max_turns: 50
+  timeout_minutes: 30
+  
+  # Agent-specific defaults
+  model: "<default-model>"
   temperature: 0.7
-  max_tokens: 4096
+  
+  # Sandbox mode (if supported)
+  sandbox:
+    enabled: true  # or false if not supported
 
-# Tool Access
-tools:
-  bash: true
-  file_system: true
-  browser: false
-  web_search: true
-  mcp: []
-
-# Safety
 safety:
-  confirm_before_destructive: true
-  confirm_before_mutation: true
-  rate_limit: true
+  # Agent-specific safety overrides
+  # Inherits all rules from configs/shared/safety.yaml
+  
+  # Additional denied commands if needed
+  extra_denied_commands: []
+  
+  # Override filesystem restrictions if needed
+  extra_deny_patterns: []
 
-# Memory
-memory:
-  max_history: 50
-  persist: true
-  session_dir: ./.agent-sessions/
-```
-
-## Usage
-
-```bash
-# Copy and rename
-cp templates/config/config-template.yaml .agent-config.yaml
-
-# Edit with your settings
-nano .agent-config.yaml
+# Environment variables required by this agent
+environment:
+  required:
+    - "API_KEY_VAR"   # TODO: replace with actual variable name
+  optional:
+    - "PROXY_URL"
+    
+# Agent-specific configuration
+# TODO: Add agent-specific settings here
 ```

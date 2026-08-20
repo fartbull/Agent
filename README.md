@@ -17,7 +17,11 @@ A single source of truth for:
 - **Reusable configurations** — shared config templates and agent-specific overrides
 - **Prompt libraries** — universal and agent-tailored prompts
 - **Workflow recipes** — coding, research, debugging, autonomous operation
-- **Integration guides** — external tools, APIs, and services
+- **Integration guides** — external tools, APIs, and services (X API, Docker, Solana, MCP)
+- **Skills system** — composable agent capabilities (trading, DeFi, Solana, social)
+- **Plugin system** — extend agents with custom MCP servers and tools
+- **TypeScript SDK** — programmatic agent automation
+- **Agent scripts** — setup, installation, and management automation
 
 ## Why
 
@@ -39,7 +43,7 @@ One knowledge base. Many agents.
 | [Cline](agents/cline/) |   ✅  |   ✅   |   ✅    |    ✅     |    ✅    |
 | [Roo Code](agents/roo/) |  ✅  |   ✅   |   ✅    |    ✅     |    ✅    |
 | [Goose](agents/goose/) |   ✅  |   ✅   |   ✅    |    ✅     |    ✅    |
-| [Copilot](agents/copilot/) | 🚧 | 🚧 | 🚧 | 🚧 | 🚧 |
+| [Copilot](agents/copilot/) |   ✅  |   ✅   |   ✅    |    ✅     |    ✅    |
 | [External](agents/external/) | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 Legend: ✅ Supported · 🚧 In progress · ❓ Needs verification
@@ -51,6 +55,7 @@ Full matrix: [docs/agents.md](docs/agents.md)
 - [Universal Agent Docs](docs/concepts/principles.md) — core concepts
 - [Agent Support Matrix](docs/agents.md) — what's covered per agent
 - [Configuration System](configs/README.md) — how config works here
+- [Skills Catalog](docs/skills/) — all available agent skills
 - [Templates](templates/) — add a new agent in minutes
 - [TODO.md](TODO.md) — roadmap and what's unfinished
 
@@ -89,8 +94,12 @@ agents/external/   → Custom/external agent integration guide
 │   ├── memory/            ← Memory strategies
 │   ├── context/           ← Context packing strategies
 │   ├── tools/             ← Tool usage guides
-│   ├── integrations/      ← External service integration guides
-│   └── reference/         ← Reference material
+│   ├── integrations/      ← External service integration guides (X API, Docker)
+│   ├── skills/            ← Composable agent capabilities catalog
+│   ├── plugins/           ← Plugin system for extending agents
+│   ├── sdk/               ← TypeScript SDK reference
+│   ├── scripts/           ← Setup and management scripts
+│   └── reference/         ← Reference material (glossary, tables)
 │
 ├── agents/                ← Per-agent implementation (see below)
 │   ├── pi/

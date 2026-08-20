@@ -1,49 +1,62 @@
 # Workflow Template
 
-A template for documenting agent workflows.
+This template defines the structure for reusable agent workflows.
+Copy this file and customize for each workflow.
 
 ```yaml
-# Workflow: {name}
-# Description: {what this workflow does}
+# Workflow: <workflow-name>
+# Description: <Brief description of what this workflow does>
+# Compatible agents: <list of agent names that support this workflow>
 
-name: {workflow-name}
-
-trigger:
-  type: {manual|cron|webhook}
-  schedule: {cron-expression}  # only if cron
+workflow:
+  name: "<workflow-name>"
+  description: "<Brief description>"
+  version: "1.0.0"
 
 steps:
-  - name: {step-name}
-    action: {action-type}  # e.g., search, read, post, summarize
-    params:
-      {param}: {value}
+  - name: "Prepare environment"
+    description: "Set up the working environment"
+    actions:
+      - type: "shell"
+        command: "<setup command>"
+      - type: "file_check"
+        path: "<file to verify>"
+        
+  - name: "Read source files"
+    description: "Load relevant code into context"
+    actions:
+      - type: "read"
+        path: "<file to read>"
+        
+  - name: "Execute task"
+    description: "<What the agent should do>"
+    actions:
+      - type: "prompt"
+        content: |
+          <Task description for the agent>
+          
+  - name: "Verify results"
+    description: "Run tests/build/lint"
+    actions:
+      - type: "shell"
+        command: "<verification command>"
+      - type: "expect_exit"
+        code: 0
 
-  - name: {step-name}
-    action: {action-type}
-    params:
-      {param}: {value}
-    confirm: true  # require user approval before proceeding
-
-# Error handling
-on_error:
-  retry: 2
-  retry_delay: 30s
-  fallback: {fallback-action}
-
-# Rate limiting
-rate_limit:
-  actions_per_minute: 10
-  cooldown_period: 60s
-```
-
-## Usage
-
-```bash
-# 1. Copy the template
-cp templates/workflow/workflow-template.yaml .agent-workflows/my-workflow.yaml
-
-# 2. Customize the workflow
-
-# 3. Run the workflow (agent-specific command)
-{agent-command} workflow run my-workflow
+# Safety guardrails for this workflow
+safety:
+  # Commands this workflow is allowed to run
+  allowed_commands:
+    - "<command>"
+  # Commands explicitly denied
+  denied_commands:
+    - "rm -rf"
+    - "sudo"
+    
+# Expected output
+output:
+  type: "files"  # or "text", "report"
+  artifacts:
+    - path: "<output file>"
+      description: "<what this file contains>"
 ```
