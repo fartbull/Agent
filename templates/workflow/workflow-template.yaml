@@ -1,0 +1,49 @@
+# Workflow Template
+
+A template for documenting agent workflows.
+
+```yaml
+# Workflow: {name}
+# Description: {what this workflow does}
+
+name: {workflow-name}
+
+trigger:
+  type: {manual|cron|webhook}
+  schedule: {cron-expression}  # only if cron
+
+steps:
+  - name: {step-name}
+    action: {action-type}  # e.g., search, read, post, summarize
+    params:
+      {param}: {value}
+
+  - name: {step-name}
+    action: {action-type}
+    params:
+      {param}: {value}
+    confirm: true  # require user approval before proceeding
+
+# Error handling
+on_error:
+  retry: 2
+  retry_delay: 30s
+  fallback: {fallback-action}
+
+# Rate limiting
+rate_limit:
+  actions_per_minute: 10
+  cooldown_period: 60s
+```
+
+## Usage
+
+```bash
+# 1. Copy the template
+cp templates/workflow/workflow-template.yaml .agent-workflows/my-workflow.yaml
+
+# 2. Customize the workflow
+
+# 3. Run the workflow (agent-specific command)
+{agent-command} workflow run my-workflow
+```

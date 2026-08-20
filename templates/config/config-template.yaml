@@ -1,0 +1,46 @@
+# Configuration Template
+
+A generic configuration template. Copy and customize for any agent.
+
+```yaml
+# Agent Configuration
+# Copy to: <agent-config-path>
+# See: ../../configs/README.md
+
+# Model Settings
+model:
+  provider: {anthropic|openai|google|openrouter|groq|local}
+  name: {model-name}
+  temperature: 0.7
+  max_tokens: 4096
+
+# Tool Access
+tools:
+  bash: true
+  file_system: true
+  browser: false
+  web_search: true
+  mcp: []
+
+# Safety
+safety:
+  confirm_before_destructive: true
+  confirm_before_mutation: true
+  rate_limit: true
+
+# Memory
+memory:
+  max_history: 50
+  persist: true
+  session_dir: ./.agent-sessions/
+```
+
+## Usage
+
+```bash
+# Copy and rename
+cp templates/config/config-template.yaml .agent-config.yaml
+
+# Edit with your settings
+nano .agent-config.yaml
+```
