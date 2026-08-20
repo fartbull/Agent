@@ -1,0 +1,10 @@
+name: Pi
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+# Pi is conversational, no sandbox needed
+sandbox:
+  enabled: false
+environment:
+  required: []
+  optional: []

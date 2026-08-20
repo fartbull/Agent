@@ -1,0 +1,11 @@
+name: Gemini
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+# TODO: Verify sandbox support
+sandbox:
+  enabled: true
+environment:
+  required:
+    - GOOGLE_API_KEY
+  optional: []

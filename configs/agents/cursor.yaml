@@ -1,0 +1,12 @@
+name: Cursor
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+sandbox:
+  enabled: false
+environment:
+  required: []
+  optional: []
+safety:
+  # Cursor uses VS Code settings for permissions
+  extra_denied_commands: []

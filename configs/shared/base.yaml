@@ -1,0 +1,44 @@
+# Base Configuration (Universal Defaults)
+
+This file defines default settings that apply to all agents unless overridden.
+
+```yaml
+# Base agent configuration
+defaults:
+  # Maximum turns/context length per session
+  max_turns: 50
+  
+  # Default timeout for agent tasks (minutes)
+  timeout_minutes: 30
+  
+  # Whether to use git for history/checkpoints
+  git_integration: true
+  
+  # Default working directory behavior
+  working_dir:
+    auto_create: true
+    gitignore_respect: true
+
+# Safety defaults
+safety:
+  # Require confirmation before running destructive commands
+  confirm_destructive: true
+  
+  # Deny list of commands that agents should never run
+  denied_commands:
+    - "rm -rf /"
+    - "sudo"
+    - "chmod -R 777"
+    - "mkfs"
+  
+  # Require confirmation before making network requests
+  confirm_network: true
+
+# Logging
+logging:
+  level: info
+  file: ".fartbull/agent.log"
+  
+  # Keep last N sessions
+  retention: 10
+```

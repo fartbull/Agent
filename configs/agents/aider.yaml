@@ -1,0 +1,13 @@
+name: Aider
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+# Aider runs directly on filesystem, no sandbox
+sandbox:
+  enabled: false
+environment:
+  required:
+    - ANTHROPIC_API_KEY  # or OPENAI_API_KEY
+  optional:
+    - OPENAI_API_KEY
+    - GOOGLE_API_KEY

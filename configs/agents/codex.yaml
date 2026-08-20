@@ -1,0 +1,12 @@
+name: Codex
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+# Codex runs in Docker sandbox
+sandbox:
+  enabled: true
+  type: docker
+environment:
+  required:
+    - OPENAI_API_KEY
+  optional: []

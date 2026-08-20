@@ -1,0 +1,12 @@
+name: Cline
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+sandbox:
+  enabled: false
+environment:
+  required:
+    - ANTHROPIC_API_KEY  # or OPENAI_API_KEY
+  optional:
+    - OPENAI_API_KEY
+    - GOOGLE_API_KEY

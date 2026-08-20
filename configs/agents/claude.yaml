@@ -1,0 +1,11 @@
+name: Claude Code
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+# Claude Code has built-in tool execution
+sandbox:
+  enabled: false  # Uses Claude's own sandbox
+environment:
+  required:
+    - ANTHROPIC_API_KEY  # Alternative to browser auth
+  optional: []

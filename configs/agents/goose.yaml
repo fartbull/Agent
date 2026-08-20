@@ -1,0 +1,15 @@
+name: Goose
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+# Goose runs in Docker sandbox by default
+sandbox:
+  enabled: true
+  type: docker
+environment:
+  required:
+    - ANTHROPIC_API_KEY  # or other provider key
+  optional:
+    - OPENAI_API_KEY
+    - GOOGLE_API_KEY
+    - BRAVE_API_KEY  # for web search

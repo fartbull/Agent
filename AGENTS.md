@@ -10,8 +10,8 @@ This file is the entry point for any AI agent (Codex, Claude Code, Cursor, Aider
 
 A **universal agent knowledge base** maintained by FARTBULL.
 
-- **Goal:** One documentation + configuration + workflow repository that works across many AI agents.
-- **Scope:** Setup guides, configuration patterns, prompt libraries, workflow recipes, integration guides, and reference material.
+- **Goal:** One documentation + configuration + workflow + skills repository that works across many AI agents.
+- **Scope:** Setup guides, configuration patterns, prompt libraries, workflow recipes, integration guides, skills, plugins, SDK, scripts, and reference material.
 - **Not:** A tool you install and run. A documentation/configuration repository you read and adapt.
 
 ---
@@ -19,11 +19,12 @@ A **universal agent knowledge base** maintained by FARTBULL.
 ## Architecture at a Glance
 
 ```text
-docs/     →  Universal concepts shared by ALL agents
+docs/     →  Universal concepts, skills, plugins, SDK, scripts (shared by ALL agents)
 agents/   →  Per-agent setup, config, prompts (agent-specific)
 configs/  →  Reusable configuration (shared + agent overrides)
 templates/→  Scaffolding for adding new agents, prompts, configs
 examples/ →  Working examples (universal + agent-specific)
+.github/  →  CI workflows, issue templates
 ```
 
 **Rule of thumb:**
@@ -97,7 +98,7 @@ agents/<agent>/
 3. Create setup, config, prompts, workflows, examples, and reference content
 4. Add the agent to `docs/agents.md` (support matrix)
 5. Add TODO items for incomplete areas in `TODO.md`
-6. If the agent has unique config, add overrides in `configs/agents/<new-agent>/`
+6. If the agent has unique config, add overrides in `configs/agents/<new-agent>.yaml`
 
 See [templates/agent/README.md](templates/agent/README.md) for the skeleton.
 
@@ -139,6 +140,9 @@ See [templates/agent/README.md](templates/agent/README.md) for the skeleton.
 | "What agents are supported?" | [docs/agents.md](docs/agents.md) |
 | "How do I set up agent X?" | [agents/x/README.md](agents/x/README.md) → [agents/x/setup/](agents/x/setup/) |
 | "What config should I use?" | [configs/README.md](configs/README.md) |
+| "What skills are available?" | [docs/skills/](docs/skills/) |
+| "How do I post to X via curl?" | [docs/integrations/x-api.md](docs/integrations/x-api.md) |
+| "How do I add a skill?" | [docs/skills/README.md](docs/skills/) → [templates/agent/](templates/agent/) |
 | "I want to add an agent" | [AGENTS.md → Adding New Agents](#how-to-add-a-new-agent) + [templates/agent/](templates/agent/) |
 | "What's unfinished?" | [TODO.md](TODO.md) |
 

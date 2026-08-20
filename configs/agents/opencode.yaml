@@ -1,0 +1,10 @@
+name: OpenCode
+inherits:
+  - shared/base.yaml
+  - shared/safety.yaml
+# TODO: Verify all settings below
+sandbox:
+  enabled: true
+environment:
+  required: []
+  optional: []

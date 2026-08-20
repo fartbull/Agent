@@ -1,0 +1,62 @@
+# Safety Configuration
+
+This file defines safety defaults and guardrails for all agents.
+
+```yaml
+# Safety guardrails — apply to ALL agents
+guardrails:
+  # File system safety
+  filesystem:
+    deny_patterns:
+      - ".env"
+      - "*.key"
+      - "*.pem"
+      - "*.p12"
+      - "credentials/*"
+      - "secrets/*"
+    allow_patterns:
+      - "src/**/*.ts"
+      - "src/**/*.py"
+      - "docs/**/*"
+      - "*.md"
+
+  # Command execution safety
+  commands:
+    require_confirmation:
+      - "rm"
+      - "mv"
+      - "git push"
+      - "docker run"
+    auto_deny:
+      - "rm -rf *"
+      - "sudo rm"
+      - "mkfs"
+      - "dd if="
+      - ":(){:|:&};:"
+
+  # Network access
+  network:
+    # Whether to allow unrestricted network access
+    allow_unrestricted: false
+    
+    # Allowed domains for web access
+    allowed_domains: []
+    
+    # Block known malicious domains
+    blocked_domains:
+      - "example-malicious.com"
+
+  # Output safety
+  output:
+    # Strip sensitive data from agent output
+    redact_secrets: true
+    secret_patterns:
+      - "sk-[a-zA-Z0-9]{20,}"
+      - "AKIA[a-zA-Z0-9]{16}"
+      - "ghp_[a-zA-Z0-9]{36,}"
+
+# FARTBULL-specific: no Telegram, no Discord
+restricted_platforms:
+  - "telegram"
+  - "discord"
+```
